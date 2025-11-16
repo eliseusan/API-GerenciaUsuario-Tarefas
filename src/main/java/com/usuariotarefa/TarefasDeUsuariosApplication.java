@@ -1,4 +1,4 @@
-package com.tarefasUsuarios;
+package com.usuariotarefa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

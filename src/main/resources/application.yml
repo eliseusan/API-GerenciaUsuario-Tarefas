@@ -1,0 +1,19 @@
+server:
+  servlet:
+  # context-path: /tarefas-usuario/api # Removido para evitar conflitos
+
+spring:
+  mvc:
+    servlet:
+      path: /tarefas-usuario/api # Define o prefixo apenas para os endpoints da API
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
