@@ -1,5 +1,6 @@
 package com.usuariotarefa.Usuario.application.api.controller;
 
+import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioAlteracaoRequest;
 import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioRequest;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioDetalhadoListResponse;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioListResponse;
@@ -30,5 +31,10 @@ public interface UsuarioAPI {
     @DeleteMapping(value = "/{idUsuario}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     void deleteUsuarioPeloId(@PathVariable UUID idUsuario);
+
+    @PatchMapping(value= "/{idUsuario}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void alteraUsuario(@PathVariable UUID idUsuario,
+                            @Valid @RequestBody UsuarioAlteracaoRequest usuarioAlteracaoRequest);
 
 }

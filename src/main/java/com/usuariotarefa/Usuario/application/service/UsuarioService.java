@@ -1,5 +1,6 @@
 package com.usuariotarefa.Usuario.application.service;
 
+import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioAlteracaoRequest;
 import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioRequest;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioDetalhadoListResponse;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioListResponse;
@@ -17,4 +18,6 @@ public interface UsuarioService {
     UsuarioDetalhadoListResponse buscaUsuarioPorId(UUID idUsuario);
 
     void deleteUsuarioPeloId(UUID idUsuario);
+
+    void alteraUsuario(UUID idUsuario, UsuarioAlteracaoRequest usuarioAlteracaoRequest);
 }

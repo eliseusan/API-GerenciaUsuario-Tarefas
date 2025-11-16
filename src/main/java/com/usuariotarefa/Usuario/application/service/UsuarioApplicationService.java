@@ -1,5 +1,6 @@
 package com.usuariotarefa.Usuario.application.service;
 
+import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioAlteracaoRequest;
 import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioRequest;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioDetalhadoListResponse;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioListResponse;
@@ -42,7 +43,6 @@ public class UsuarioApplicationService implements UsuarioService {
         var usuario = usuarioRepository.buscaUsuarioPorId(idUsuario);
         log.info("[finish] UsuarioApplicationService - buscaUsuarioPorId");
         return new UsuarioDetalhadoListResponse(usuario);
-
     }
 
     @Override
@@ -51,5 +51,14 @@ public class UsuarioApplicationService implements UsuarioService {
         Usuario usuario = usuarioRepository.buscaUsuarioPorId(idUsuario);
         usuarioRepository.deleteUsuarioPeloId(usuario);
         log.info("[start] UsuarioApplicationService - deleteUsuarioPeloId");
+    }
+
+    @Override
+    public void alteraUsuario(UUID idUsuario, UsuarioAlteracaoRequest usuarioAlteracaoRequest) {
+        log.info("[start] UsuarioApplicationService - alteraUsuario");
+        Usuario usuario = usuarioRepository.buscaUsuarioPorId(idUsuario);
+        usuario.altera(usuarioAlteracaoRequest);
+        usuarioRepository.salva(usuario);
+        log.info("[finish] UsuarioApplicationService - alteraUsuario");
     }
 }

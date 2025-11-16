@@ -1,5 +1,6 @@
 package com.usuariotarefa.Usuario.application.api.controller;
 
+import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioAlteracaoRequest;
 import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioRequest;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioDetalhadoListResponse;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioListResponse;
@@ -48,6 +49,19 @@ public class UsuarioController implements UsuarioAPI {
         log.info("[idUsuario] {}", idUsuario);
         usuarioService.deleteUsuarioPeloId(idUsuario);
         log.info("[finish] UsuarioController - deleteUsuarioPeloId");
+
+    }
+
+    @Override
+    public void alteraUsuario(UUID idUsuario, UsuarioAlteracaoRequest usuarioAlteracaoRequest) {
+        log.info("[start] UsuarioController - alteraUsuario");
+        log.info("[idUsuario] {}", idUsuario);
+        usuarioService.alteraUsuario(idUsuario, usuarioAlteracaoRequest);
+        log.info("[finish] UsuarioController - alteraUsuario");
+
+
+
+
 
     }
 }

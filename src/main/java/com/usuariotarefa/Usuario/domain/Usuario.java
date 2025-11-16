@@ -1,6 +1,7 @@
 package com.usuariotarefa.Usuario.domain;
 
 import com.usuariotarefa.Tarefa.domain.Tarefa;
+import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioAlteracaoRequest;
 import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -47,5 +48,11 @@ public class Usuario {
         this.email = usuarioRequest.getEmail();
         this.senha = usuarioRequest.getSenha();
         this.dataHoraDoCadastro = LocalDateTime.now();
+    }
+
+    public void altera(UsuarioAlteracaoRequest usuarioAlteracaoRequest) {
+        this.nome = usuarioAlteracaoRequest.getNome();
+        this.email = usuarioAlteracaoRequest.getEmail();
+        this.senha = usuarioAlteracaoRequest.getSenha();
     }
 }
