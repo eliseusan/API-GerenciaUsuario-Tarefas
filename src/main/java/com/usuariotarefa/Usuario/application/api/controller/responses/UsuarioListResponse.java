@@ -12,12 +12,11 @@ import java.util.stream.Collectors;
 
 @ToString
 @Getter
-@JsonPropertyOrder({ "idUsuario", "nome", "email", "senha", "dataHoraDoCadastro", "dataHoraDaUltimaAlteracao" })
+@JsonPropertyOrder({ "idUsuario", "nome", "email", "dataHoraDoCadastro", "dataHoraDaUltimaAlteracao" })
 public class UsuarioListResponse {
     private UUID idUsuario;
     private String nome;
     private String email;
-    private String senha;
     private LocalDateTime dataHoraDoCadastro ;
     private LocalDateTime dataHoraDaUltimaAlteracao ;
 
@@ -25,7 +24,6 @@ public class UsuarioListResponse {
         this.idUsuario = usuario.getIdUsuario();
         this.nome = usuario.getNome();
         this.email = usuario.getEmail();
-        this.senha = usuario.getSenha();
         this.dataHoraDoCadastro = usuario.getDataHoraDoCadastro();
         this.dataHoraDaUltimaAlteracao = usuario.getDataHoraDaUltimaAlteracao();
     }

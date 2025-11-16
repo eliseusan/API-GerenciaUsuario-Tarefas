@@ -54,5 +54,6 @@ public class Usuario {
         this.nome = usuarioAlteracaoRequest.getNome();
         this.email = usuarioAlteracaoRequest.getEmail();
         this.senha = usuarioAlteracaoRequest.getSenha();
+        this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
     }
 }

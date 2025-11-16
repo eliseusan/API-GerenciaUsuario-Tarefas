@@ -13,7 +13,6 @@ public class UsuarioDetalhadoListResponse {
     private UUID idUsuario;
     private String nome;
     private String email;
-    private String senha;
     private LocalDateTime dataHoraDoCadastro ;
     private LocalDateTime dataHoraDaUltimaAlteracao ;
 
@@ -21,7 +20,6 @@ public class UsuarioDetalhadoListResponse {
         this.idUsuario = usuario.getIdUsuario();
         this.nome = usuario.getNome();
         this.email = usuario.getEmail();
-        this.senha = usuario.getSenha();
         this.dataHoraDoCadastro = usuario.getDataHoraDoCadastro();
         this.dataHoraDaUltimaAlteracao = usuario.getDataHoraDaUltimaAlteracao();
     }
