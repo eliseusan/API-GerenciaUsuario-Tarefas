@@ -12,4 +12,6 @@ public interface UsuarioRepository {
     List<Usuario> buscaTodosUsuarios();
 
     Usuario buscaUsuarioPorId(UUID idUsuario);
+
+    void deleteUsuarioPeloId(Usuario usuario);
 }

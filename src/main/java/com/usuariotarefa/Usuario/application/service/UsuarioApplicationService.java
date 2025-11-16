@@ -44,4 +44,12 @@ public class UsuarioApplicationService implements UsuarioService {
         return new UsuarioDetalhadoListResponse(usuario);
 
     }
+
+    @Override
+    public void deleteUsuarioPeloId(UUID idUsuario) {
+        log.info("[start] UsuarioApplicationService - deleteUsuarioPeloId");
+        Usuario usuario = usuarioRepository.buscaUsuarioPorId(idUsuario);
+        usuarioRepository.deleteUsuarioPeloId(usuario);
+        log.info("[start] UsuarioApplicationService - deleteUsuarioPeloId");
+    }
 }

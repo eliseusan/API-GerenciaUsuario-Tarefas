@@ -37,8 +37,15 @@ public class UsuarioInfraRepository implements UsuarioRepository {
     public Usuario buscaUsuarioPorId(UUID idUsuario) {
         log.info("[start] UsuarioInfraRepository - buscaUsuarioPorId");
         var usuario = usuarioSpringDataJPARepository.findById(idUsuario)
-                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "FORNECEDOR NÃO ENCONTRADO!"));
+                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "USUARIO NAO ENCONTRADO!"));
         log.info("[finish] UsuarioInfraRepository - buscaUsuarioPorId");
         return usuario;
+    }
+
+    @Override
+    public void deleteUsuarioPeloId(Usuario usuario) {
+        log.info("[start] UsuarioInfraRepository - deleteUsuarioPeloId");
+        usuarioSpringDataJPARepository.delete(usuario);
+        log.info("[finish] UsuarioInfraRepository - deleteUsuarioPeloId");
     }
 }
