@@ -33,4 +33,9 @@ public class TarefaController implements TarefaAPI {
         log.info("[finish] TarefaController - buscaTodasTarefas");
         return listaDeTarefas;
     }
+
+    @Override
+    public List<TarefaListResponse> buscaTodasTarefas(UUID idUsuario) {
+        return List.of();
+    }
 }
