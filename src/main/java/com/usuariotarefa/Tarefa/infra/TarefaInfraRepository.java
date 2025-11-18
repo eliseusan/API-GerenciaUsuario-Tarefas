@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Log4j2
 @RequiredArgsConstructor
@@ -22,4 +24,11 @@ public class TarefaInfraRepository implements TarefaRepository {
         return tarefa;
     }
 
+    @Override
+    public List<Tarefa> buscaTodasTarefas() {
+        log.info("[start] TarefaInfraRepository - buscaTodasTarefas");
+        List<Tarefa> tarefas = tarefaSpringDataJPARepository.findAll();
+        log.info("[finish] TarefaInfraRepository - buscaTodasTarefas");
+        return tarefas;
+    }
 }

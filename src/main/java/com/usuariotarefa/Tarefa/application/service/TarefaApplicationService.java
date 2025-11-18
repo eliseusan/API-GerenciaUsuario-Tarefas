@@ -1,6 +1,7 @@
 package com.usuariotarefa.Tarefa.application.service;
 
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
+import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaResponse;
 import com.usuariotarefa.Tarefa.application.repository.TarefaRepository;
 import com.usuariotarefa.Tarefa.domain.Tarefa;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 @Service
 @RequiredArgsConstructor
@@ -25,5 +27,14 @@ public class TarefaApplicationService implements TarefaService {
         Tarefa tarefa = tarefaRepository.salvaTarefa(new Tarefa(usuario, tarefaRequest));
         log.info("[finish] TarefaApplicationService - salvaTarefa");
         return new TarefaResponse(tarefa);
+    }
+
+    @Override
+    public List<TarefaListResponse> buscaTodasTarefas() {
+        log.info("[start] TarefaApplicationService - buscaTodasTarefas");
+        List<Tarefa> tarefas = tarefaRepository.buscaTodasTarefas();
+        log.info("[finish] TarefaApplicationService - buscaTodasTarefas");
+        return TarefaListResponse.converte(tarefas);
+
     }
 }

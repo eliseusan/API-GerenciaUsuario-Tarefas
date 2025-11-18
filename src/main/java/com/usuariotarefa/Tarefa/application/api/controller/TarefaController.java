@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 @Log4j2
@@ -28,7 +29,8 @@ public class TarefaController implements TarefaAPI {
     @Override
     public List<TarefaListResponse> buscaTodasTarefas() {
         log.info("[start] TarefaController - buscaTodasTarefas");
+        var listaDeTarefas = tarefaService.buscaTodasTarefas();
         log.info("[finish] TarefaController - buscaTodasTarefas");
-        return null;
+        return listaDeTarefas;
     }
 }
