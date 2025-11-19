@@ -2,6 +2,7 @@ package com.usuariotarefa.Tarefa.application.api.controller;
 
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListResponse;
+import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListUsuarioResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -24,5 +25,5 @@ public interface TarefaAPI {
 
     @GetMapping(value = "usuario/{idUsuario}")
     @ResponseStatus(code = HttpStatus.OK)
-    List<TarefaListResponse> buscaTodasTarefas(@PathVariable UUID idUsuario);
+    List<TarefaListUsuarioResponse> buscaTodasTarefasDoUsuario(@PathVariable UUID idUsuario);
 }

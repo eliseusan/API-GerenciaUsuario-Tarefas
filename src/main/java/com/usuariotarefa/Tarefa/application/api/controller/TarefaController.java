@@ -2,6 +2,7 @@ package com.usuariotarefa.Tarefa.application.api.controller;
 
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListResponse;
+import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListUsuarioResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaResponse;
 import com.usuariotarefa.Tarefa.application.service.TarefaService;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,11 @@ public class TarefaController implements TarefaAPI {
     }
 
     @Override
-    public List<TarefaListResponse> buscaTodasTarefas(UUID idUsuario) {
-        return List.of();
+    public List<TarefaListUsuarioResponse> buscaTodasTarefasDoUsuario(UUID idUsuario) {
+        log.info("[start] TarefaController - buscaTodasTarefasDoUsuario");
+        log.info("[idUsuario] {}", idUsuario);
+        var listaDeTarefasDoUsuario = tarefaService.buscaTodasTarefasDoUsuario(idUsuario);
+        log.info("[finish] TarefaController - buscaTodasTarefasDoUsuario");
+        return listaDeTarefasDoUsuario;
     }
 }

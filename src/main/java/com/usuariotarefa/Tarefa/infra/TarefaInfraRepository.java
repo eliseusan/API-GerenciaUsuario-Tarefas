@@ -31,4 +31,12 @@ public class TarefaInfraRepository implements TarefaRepository {
         log.info("[finish] TarefaInfraRepository - buscaTodasTarefas");
         return tarefas;
     }
+
+    @Override
+    public List<Tarefa> buscaTodasTarefasDoUsuario(Usuario usuario) {
+        log.info("[start] TarefaInfraRepository - buscaTodasTarefasDoUsuario");
+        List<Tarefa> tarefas = tarefaSpringDataJPARepository.findByUsuario(usuario);
+        log.info("[finish] TarefaInfraRepository - buscaTodasTarefasDoUsuario");
+        return tarefas;
+    }
 }

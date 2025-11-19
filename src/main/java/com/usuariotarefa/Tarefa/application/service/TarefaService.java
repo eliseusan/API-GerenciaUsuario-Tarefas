@@ -2,6 +2,7 @@ package com.usuariotarefa.Tarefa.application.service;
 
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListResponse;
+import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListUsuarioResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaResponse;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface TarefaService {
     TarefaResponse salvaTarefa(UUID idUsuario, TarefaRequest tarefaRequest);
 
     List<TarefaListResponse> buscaTodasTarefas();
+
+    List<TarefaListUsuarioResponse> buscaTodasTarefasDoUsuario(UUID idUsuario);
 }

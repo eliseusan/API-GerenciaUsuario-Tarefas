@@ -2,9 +2,11 @@ package com.usuariotarefa.Tarefa.application.service;
 
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListResponse;
+import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListUsuarioResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaResponse;
 import com.usuariotarefa.Tarefa.application.repository.TarefaRepository;
 import com.usuariotarefa.Tarefa.domain.Tarefa;
+import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioListResponse;
 import com.usuariotarefa.Usuario.application.repository.UsuarioRepository;
 import com.usuariotarefa.Usuario.domain.Usuario;
 import lombok.RequiredArgsConstructor;
@@ -36,5 +38,15 @@ public class TarefaApplicationService implements TarefaService {
         log.info("[finish] TarefaApplicationService - buscaTodasTarefas");
         return TarefaListResponse.converte(tarefas);
 
+    }
+
+    @Override
+    public List<TarefaListUsuarioResponse> buscaTodasTarefasDoUsuario(UUID idUsuario) {
+        log.info("[start] TarefaApplicationService - buscaTodasTarefasDoUsuario");
+        log.info("[idUsuario] {}", idUsuario);
+        Usuario usuario = usuarioRepository.buscaUsuarioPorId(idUsuario);
+        List<Tarefa> tarefas = tarefaRepository.buscaTodasTarefasDoUsuario(usuario);
+        log.info("[finish] TarefaApplicationService - buscaTodasTarefasDoUsuario");
+        return TarefaListUsuarioResponse.converte(tarefas);
     }
 }

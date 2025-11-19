@@ -9,4 +9,6 @@ public interface TarefaRepository {
     Tarefa salvaTarefa(Tarefa tarefa);
 
     List<Tarefa> buscaTodasTarefas();
+
+    List<Tarefa> buscaTodasTarefasDoUsuario(Usuario usuario);
 }
