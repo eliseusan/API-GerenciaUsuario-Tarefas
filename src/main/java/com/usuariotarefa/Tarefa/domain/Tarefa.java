@@ -45,4 +45,9 @@ public class Tarefa {
         this.dataHoraDoCadastro = LocalDateTime.now();
         this.usuario = usuario;
     }
+
+    public void alteraStatus(Enum status) {
+        this.status = StatusTarefa.valueOf(status.toString());
+        this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
+    }
 }

@@ -3,8 +3,10 @@ package com.usuariotarefa.Tarefa.application.service;
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListUsuarioResponse;
+import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaPorUsuarioResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaResponse;
 import com.usuariotarefa.Tarefa.application.repository.TarefaRepository;
+import com.usuariotarefa.Tarefa.domain.StatusTarefa.StatusTarefa;
 import com.usuariotarefa.Tarefa.domain.Tarefa;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioListResponse;
 import com.usuariotarefa.Usuario.application.repository.UsuarioRepository;
@@ -48,5 +50,24 @@ public class TarefaApplicationService implements TarefaService {
         List<Tarefa> tarefas = tarefaRepository.buscaTodasTarefasDoUsuario(usuario);
         log.info("[finish] TarefaApplicationService - buscaTodasTarefasDoUsuario");
         return TarefaListUsuarioResponse.converte(tarefas);
+    }
+
+    @Override
+    public void atualizaStatusTarefa(UUID idTarefa, StatusTarefa status) {
+        log.info("[start] TarefaApplicationService - atualizaStatusTarefa");
+        log.info("[idTarefa] {}", idTarefa);
+        log.info("[status] {}", status);
+        Tarefa tarefa = tarefaRepository.buscaTarefaPorId(idTarefa);
+        tarefa.alteraStatus(status);
+        tarefaRepository.salvaTarefa(tarefa);
+    }
+
+    @Override
+    public TarefaPorUsuarioResponse buscaTarefaPorId(UUID idTarefa) {
+        log.info("[start] TarefaApplicationService - buscaTarefaPorId");
+        log.info("[idTarefa] {}", idTarefa);
+        Tarefa tarefa = tarefaRepository.buscaTarefaPorId(idTarefa);
+        log.info("[finish] TarefaApplicationService - buscaTarefaPorId");
+        return new TarefaPorUsuarioResponse(tarefa);
     }
 }

@@ -3,11 +3,14 @@ package com.usuariotarefa.Tarefa.infra;
 import com.usuariotarefa.Tarefa.application.repository.TarefaRepository;
 import com.usuariotarefa.Tarefa.domain.Tarefa;
 import com.usuariotarefa.Usuario.domain.Usuario;
+import com.usuariotarefa.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 @Log4j2
@@ -38,5 +41,15 @@ public class TarefaInfraRepository implements TarefaRepository {
         List<Tarefa> tarefas = tarefaSpringDataJPARepository.findByUsuario(usuario);
         log.info("[finish] TarefaInfraRepository - buscaTodasTarefasDoUsuario");
         return tarefas;
+    }
+
+    @Override
+    public Tarefa buscaTarefaPorId(UUID idTarefa) {
+        log.info("[start] TarefaInfraRepository - buscaTarefaPorId");
+        Tarefa tarefa = tarefaSpringDataJPARepository.findById(idTarefa)
+                .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "TAREFA NAO ENCONTRADA!"));
+        log.info("[finish] TarefaInfraRepository - buscaTarefaPorId");
+        return tarefa;
+
     }
 }

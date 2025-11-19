@@ -4,6 +4,7 @@ import com.usuariotarefa.Tarefa.domain.Tarefa;
 import com.usuariotarefa.Usuario.domain.Usuario;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface TarefaRepository {
     Tarefa salvaTarefa(Tarefa tarefa);
@@ -11,4 +12,6 @@ public interface TarefaRepository {
     List<Tarefa> buscaTodasTarefas();
 
     List<Tarefa> buscaTodasTarefasDoUsuario(Usuario usuario);
+
+    Tarefa buscaTarefaPorId(UUID idTarefa);
 }
