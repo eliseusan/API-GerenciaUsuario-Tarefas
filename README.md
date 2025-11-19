@@ -22,17 +22,20 @@ Desenvolver uma **API RESTful** para gerenciamento de **Usuários e Tarefas**, a
 ## ⚙️ Funcionalidades Esperadas
 
 ### 👤 Usuários
-- `POST /usuarios` → Criação de usuário
-- `GET /usuarios` → Listagem de usuários
-- `GET /usuarios/{id}` → Buscar por ID
-- `PUT /usuarios/{id}` → Atualizar usuário
-- `DELETE /usuarios/{id}` → Remover usuário
+- `POST /v1/usuario` → Criação de usuário
+- `GET /v1/usuario` → Listagem de usuários
+- `GET /v1/usuario/{idUsuario}` → Buscar por ID
+- `PATCH /v1/usuario/{idUsuario}` → Atualizar usuário
+- `DELETE /v1/usuario/{idUsuario}` → Remover usuário
 
 ### ✅ Tarefas
-- `POST /tarefas` → Criar tarefa vinculada a um usuário
-- `GET /tarefas` → Listar todas as tarefas
-- `GET /tarefas/usuario/{idUsuario}` → Listar tarefas por usuário
-- `PATCH /tarefas/{id}/status` → Atualizar status da tarefa
+- `POST /v1/tarefa/{idUsuario}` → Criar tarefa vinculada a um usuário
+- `GET /v1/tarefa` → Listar todas as tarefas
+- `GET /v1/tarefa/usuario/{idUsuario}` → Listar tarefas por usuário
+- `GET /v1/tarefa/{idTarefa}` → Buscar tarefa por ID
+- `PATCH /v1/tarefa/{idTarefa}` → Atualizar status da tarefa
+- `PATCH /v1/tarefa/{idTarefa}/altera` → Alterar título e descrição da tarefa
+- `DELETE /v1/tarefa/{idTarefa}` → Deletar tarefa
 
 ---
 
@@ -66,5 +69,3 @@ Desenvolver uma **API RESTful** para gerenciamento de **Usuários e Tarefas**, a
 Os testes devem garantir o correto funcionamento das regras de negócio e cobrir:
 - Camada de **Service** (JUnit + Mockito)
 - Camada de **Controller** (MockMvc)
-
-
