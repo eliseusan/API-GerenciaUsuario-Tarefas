@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 @Getter
 @ToString
 public class TarefaListUsuarioResponse {
-    private final UUID idUsuario;
     private final UUID idTarefa;
+    private final UUID idUsuario;
     private String titulo;
     private String descricao;
     private StatusTarefa status;

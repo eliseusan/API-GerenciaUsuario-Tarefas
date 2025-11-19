@@ -1,6 +1,7 @@
 package com.usuariotarefa.Tarefa.domain;
 
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
+import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaAlteracaoRequest;
 import com.usuariotarefa.Tarefa.domain.StatusTarefa.StatusTarefa;
 import com.usuariotarefa.Usuario.domain.Usuario;
 import jakarta.persistence.*;
@@ -48,6 +49,12 @@ public class Tarefa {
 
     public void alteraStatus(Enum status) {
         this.status = StatusTarefa.valueOf(status.toString());
+        this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
+    }
+
+    public void altera(TarefaAlteracaoRequest tarefaAlteracaoRequest) {
+        this.titulo = tarefaAlteracaoRequest.getTitulo();
+        this.descricao = tarefaAlteracaoRequest.getDescricao();
         this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
     }
 }

@@ -1,6 +1,7 @@
 package com.usuariotarefa.Tarefa.application.service;
 
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
+import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaAlteracaoRequest;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListUsuarioResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaPorUsuarioResponse;
@@ -69,5 +70,22 @@ public class TarefaApplicationService implements TarefaService {
         Tarefa tarefa = tarefaRepository.buscaTarefaPorId(idTarefa);
         log.info("[finish] TarefaApplicationService - buscaTarefaPorId");
         return new TarefaPorUsuarioResponse(tarefa);
+    }
+
+    @Override
+    public void alteraTarefa(UUID idTarefa, TarefaAlteracaoRequest tarefaAlteracaoRequest) {
+        log.info("[start] TarefaApplicationService - alteraTarefa");
+        Tarefa tarefa = tarefaRepository.buscaTarefaPorId(idTarefa);
+        tarefa.altera(tarefaAlteracaoRequest);
+        tarefaRepository.salvaTarefa(tarefa);
+        log.info("[finish] TarefaApplicationService - alteraTarefa");
+    }
+
+    @Override
+    public void deletaTarefa(UUID idTarefa) {
+        log.info("[start] TarefaApplicationService - deletaTarefa");
+        Tarefa tarefa = tarefaRepository.buscaTarefaPorId(idTarefa);
+        tarefaRepository.deletaTarefa(tarefa);
+        log.info("[finish] TarefaApplicationService - deletaTarefa");
     }
 }

@@ -1,6 +1,7 @@
 package com.usuariotarefa.Tarefa.application.api.controller;
 
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
+import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaAlteracaoRequest;
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaStatusUpdateRequest;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListUsuarioResponse;
@@ -61,5 +62,21 @@ public class TarefaController implements TarefaAPI {
         var tarefaPorUsuarioResponse = tarefaService.buscaTarefaPorId(idTarefa);
         log.info("[finish] TarefaController - buscaTarefaPorId");
         return tarefaPorUsuarioResponse;
+    }
+
+    @Override
+    public void alteraTarefa(UUID idTarefa, TarefaAlteracaoRequest tarefaAlteracaoRequest) {
+        log.info("[start] TarefaController - alteraTarefa");
+        log.info("[idTarefa] {}", idTarefa);
+        tarefaService.alteraTarefa(idTarefa, tarefaAlteracaoRequest);
+        log.info("[finish] TarefaController - alteraTarefa");
+    }
+
+    @Override
+    public void deletaTarefa(UUID idTarefa) {
+        log.info("[start] TarefaController - deletaTarefa");
+        log.info("[idTarefa] {}", idTarefa);
+        tarefaService.deletaTarefa(idTarefa);
+        log.info("[finish] TarefaController - deletaTarefa");
     }
 }

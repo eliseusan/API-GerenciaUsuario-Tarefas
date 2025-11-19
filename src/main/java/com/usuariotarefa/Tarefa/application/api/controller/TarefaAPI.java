@@ -1,6 +1,7 @@
 package com.usuariotarefa.Tarefa.application.api.controller;
 
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
+import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaAlteracaoRequest;
 import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaStatusUpdateRequest;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListResponse;
 import com.usuariotarefa.Tarefa.application.api.controller.responses.TarefaListUsuarioResponse;
@@ -38,4 +39,13 @@ public interface TarefaAPI {
     @GetMapping(value = "{idTarefa}")
     @ResponseStatus(code = HttpStatus.OK)
     TarefaPorUsuarioResponse buscaTarefaPorId(@PathVariable UUID idTarefa);
+
+    @PatchMapping(value = "/{idTarefa}/altera")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void alteraTarefa(@PathVariable UUID idTarefa,
+                      @Valid @RequestBody TarefaAlteracaoRequest tarefaAlteracaoRequest);
+
+    @DeleteMapping(value = "/{idTarefa}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    void deletaTarefa(@PathVariable UUID idTarefa);
 }

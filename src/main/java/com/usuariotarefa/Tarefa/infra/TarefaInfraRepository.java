@@ -50,6 +50,12 @@ public class TarefaInfraRepository implements TarefaRepository {
                 .orElseThrow(() -> APIException.build(HttpStatus.BAD_REQUEST, "TAREFA NAO ENCONTRADA!"));
         log.info("[finish] TarefaInfraRepository - buscaTarefaPorId");
         return tarefa;
+    }
 
+    @Override
+    public void deletaTarefa(Tarefa tarefa) {
+        log.info("[start] TarefaInfraRepository - deletaTarefa");
+        tarefaSpringDataJPARepository.delete(tarefa);
+        log.info("[finish] TarefaInfraRepository - deletaTarefa");
     }
 }
