@@ -1,5 +1,7 @@
 package com.usuariotarefa.Tarefa.domain;
 
+import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaRequest;
+import com.usuariotarefa.Tarefa.application.api.controller.requests.TarefaAlteracaoRequest;
 import com.usuariotarefa.Tarefa.domain.StatusTarefa.StatusTarefa;
 import com.usuariotarefa.Usuario.domain.Usuario;
 import jakarta.persistence.*;
@@ -36,4 +38,23 @@ public class Tarefa {
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
+
+    public Tarefa(Usuario usuario, TarefaRequest tarefaRequest) {
+        this.titulo = tarefaRequest.getTitulo();
+        this.descricao = tarefaRequest.getDescricao();
+        this.status = StatusTarefa.EM_ANDAMENTO;
+        this.dataHoraDoCadastro = LocalDateTime.now();
+        this.usuario = usuario;
+    }
+
+    public void alteraStatus(Enum status) {
+        this.status = StatusTarefa.valueOf(status.toString());
+        this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
+    }
+
+    public void altera(TarefaAlteracaoRequest tarefaAlteracaoRequest) {
+        this.titulo = tarefaAlteracaoRequest.getTitulo();
+        this.descricao = tarefaAlteracaoRequest.getDescricao();
+        this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
+    }
 }

@@ -49,7 +49,6 @@ public class UsuarioController implements UsuarioAPI {
         log.info("[idUsuario] {}", idUsuario);
         usuarioService.deleteUsuarioPeloId(idUsuario);
         log.info("[finish] UsuarioController - deleteUsuarioPeloId");
-
     }
 
     @Override
@@ -58,10 +57,5 @@ public class UsuarioController implements UsuarioAPI {
         log.info("[idUsuario] {}", idUsuario);
         usuarioService.alteraUsuario(idUsuario, usuarioAlteracaoRequest);
         log.info("[finish] UsuarioController - alteraUsuario");
-
-
-
-
-
     }
 }

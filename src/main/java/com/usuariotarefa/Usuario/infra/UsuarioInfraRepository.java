@@ -1,5 +1,6 @@
 package com.usuariotarefa.Usuario.infra;
 
+import com.usuariotarefa.Usuario.application.repository.UsuarioRepository;
 import com.usuariotarefa.Usuario.domain.Usuario;
 import com.usuariotarefa.handler.APIException;
 import lombok.RequiredArgsConstructor;

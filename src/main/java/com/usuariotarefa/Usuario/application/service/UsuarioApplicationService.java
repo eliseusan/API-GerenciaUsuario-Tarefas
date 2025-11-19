@@ -5,8 +5,8 @@ import com.usuariotarefa.Usuario.application.api.controller.requests.UsuarioRequ
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioDetalhadoListResponse;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioListResponse;
 import com.usuariotarefa.Usuario.application.api.controller.responses.UsuarioResponse;
+import com.usuariotarefa.Usuario.application.repository.UsuarioRepository;
 import com.usuariotarefa.Usuario.domain.Usuario;
-import com.usuariotarefa.Usuario.infra.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

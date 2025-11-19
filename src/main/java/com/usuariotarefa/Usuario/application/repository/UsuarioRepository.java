@@ -1,4 +1,4 @@
-package com.usuariotarefa.Usuario.infra;
+package com.usuariotarefa.Usuario.application.repository;
 
 import com.usuariotarefa.Usuario.domain.Usuario;
 
